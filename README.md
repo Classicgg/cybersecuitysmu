@@ -64,4 +64,57 @@ Sets Published Ports
 
 ![Elkinstance](https://user-images.githubusercontent.com/101211313/157783626-ac4b69a4-7980-404c-b8c8-eb515e3786e5.jpg)
 
+Target Machines & Beats
+This ELK server is configured to monitor the following machines:
+
+Web-1 10.1.5
+Web-2 10.1.6
+We have installed the following Beats on these machines:
+
+Filebeat
+Metricbeat
+These Beats allow us to collect the following information from each machine:
+
+Filebeat watches for log files/locations and collect log events. (Filebeat: Lightweight Log Analysis & Elasticsearch)
+Metricbeat records metrics and statistical data from the operating system and from services running on the server (Metricbeat: Lightweight Shipper for Metrics)
+Using the Playbook
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
+
+SSH into the control node and follow the steps below:
+
+Copy the filebeat-config.yml and metricbeat-config.yml file to /etc/ansible/files.
+Update the configuration files to include the Private IP of the ELK-Server to the ElasticSearch and Kibana Sections of the Configuration File
+Run the playbook, and navigate to ELK-Server-PublicIP:5601/app/kibana to check that the installation worked as expected.
+Which file is the playbook? The playbook files are:
+
+elk-playbook.yml - used to install ELK Server
+filebeat-playbook.yml - Used to install and configure Filebeat on Elk Server and DVWA servers
+metricbeat-playbook.yml - Used to install and configure Metricbeat on Elk Server and DVWA servers
+Where do you copy it?
+
+/etc/ansible/
+
+Which file do you update to make Ansible run the playbook on a specific machine?
+
+/etc/ansible/hosts.cfg
+
+How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+
+In /etc/ansible/hosts you tell it where you want eachto be installed ElkServers or FileBeat
+
+Which URL do you navigate to in order to check that the ELK server is running?
+
+http://publicip(elkserver):5601
+
+Commands needed to run the Anisble Configuration for the Elk-Server are:
+ssh RedAdmin@JumpBox(PrivateIP)
+sudo docker container list -a - Locate the ansible container
+sudo docker start (Funny_Name)
+sudo docker attach (Funny_Name)
+cd /etc/ansible
+ansible-playbook elk-playbook.yml (Installs and Configures ELK-Server)
+cd /etc/ansible/
+ansible-playbook beats-playbook.yml (Installs and Configures Beats)
+Open a new browser on Personal Workstation, navigate to (ELK-Server-PublicIP:5601/app/kibana) - This will bring up Kibana Web Portal
+
 
