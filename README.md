@@ -61,3 +61,7 @@ Install Docker.io and pip3
 Increases VM memory
 Download and Configure elk docker container
 Sets Published Ports
+
+![Elkinstance](https://user-images.githubusercontent.com/101211313/157783626-ac4b69a4-7980-404c-b8c8-eb515e3786e5.jpg)
+
+
